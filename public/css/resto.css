@@ -59,7 +59,7 @@
     cursor: pointer;
 }
 .plat img{
-    width: 280px;
+    width: 272px;
     height: 150px;
     border-radius: 10px;
     object-fit: cover;
@@ -67,7 +67,7 @@
 .plat button{
     padding: 10px;
 }
-.plat-description{
+.plat-description, .description{
     position: absolute;
     top: 400px;
 }

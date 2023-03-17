@@ -1,7 +1,7 @@
-@extends('layouts.layout')
+@extends('layouts.dashboardLayout')
 
 @section('main')
-    <div class="container m-5">
+    <div class="container-fluid m-5">
         <form action="" method="post">
             <fieldset class="">
                 <legend class="text-success m-3">Ajouter un plat</legend>
@@ -17,9 +17,10 @@
                     <label for="platDescription" class="form-label">Description</label>
                     <textarea class="form-control" id="platDescription" name="platDescription" rows="3"></textarea>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-3 d-flex flex-column">
                     <input class="form-control d-none" type="file" id="platImage" name="platImage">
-                    <a href="" class="p-20 choose-file">Choisir une image pour votre restaurant</a>
+                    <span href="" id="choose-file" class="p-20 choose-file">Choisir une image pour votre restaurant</span>
+                    <img src="" width="400" height="400" class="" id="imageToShow" alt="">
                   </div>
                   <div class="col-12">
                     <button class="btn btn-success" type="submit">Ajouter</button>
@@ -27,4 +28,5 @@
             </fieldset>
         </form>
     </div>
+</div>
 @endsection

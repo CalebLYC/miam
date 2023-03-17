@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.dashboardLayout')
 
 @section('main')
     <div class="container row m-3">
@@ -113,8 +113,7 @@
                   </div>
                 </div>
               </div>
-
-
+        </div>
         </div>
     </div>
 

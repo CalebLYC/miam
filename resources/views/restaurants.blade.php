@@ -13,9 +13,11 @@
                 <div class="info-item"><p class="price-label">Prix moyen:   </p>
                      <p class="price">500 frs</p></div>
                 <div class="info-item">
+                    <a href=""><i class="fa-sharp fa-solid fa-location-dot"></i></a>
                     <p>Agoè-Demakpoè</p>
                 </div>
                 <div class="info-item stars">
+                    <i class="fa-regular fa-star"></i>
                     <p>3.9</p>
                 </div>
             </div>

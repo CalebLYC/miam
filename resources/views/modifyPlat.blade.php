@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.dashboardLayout')
 
 @section('main')
     <div class="container m-5">
@@ -19,12 +19,13 @@
                   </div>
                   <div class="mb-3">
                     <input class="form-control d-none" type="file" id="platImage" name="platImage">
-                    <a href="" class="p-20 choose-file">Choisir une image pour votre restaurant</a>
-                  </div>
+                    <span href="" id="choose-file" class="p-20 choose-file">Choisir une image pour votre restaurant</span>
+                    <img src="" width="400" height="400" class="" id="imageToShow" alt="">                  </div>
                   <div class="col-12">
                     <button class="btn btn-success" type="submit">Modifier</button>
                   </div>
             </fieldset>
         </form>
     </div>
+</div>
 @endsection

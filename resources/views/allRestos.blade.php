@@ -1,9 +1,22 @@
-@extends('layouts.layout')
+@extends('layouts.managerLayout')
 
 @section('main')
 <div class="container row m-3">
     <div class="col">
         <h1 class="text-success">Tous les restaurants</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-nowrap">
+            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+                        <option value="10" selected="">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>&nbsp;</label></div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+        </div>
     </div>
     <div class="table-responsive m-5">
         <table class="table table-striped table-sm">
@@ -230,5 +243,6 @@
           </tbody>
         </table>
       </div>
+</div>
 </div>
 @endsection

@@ -13,10 +13,25 @@ footer{
   user-select: none;
 }
 
+#choose-file{
+    color: blue;
+    cursor: pointer;
+}
+#imageToShow{
+    display: none;
+    width: 400;
+    height: 400;
+    object-fit: cover;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
+  #imageToShow{
+    width: 200;
+    height: 200;
+}
 }
 
 .b-example-divider {

@@ -29,9 +29,6 @@
                   <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}"/>
                   <link rel="stylesheet" href="{{asset('css/headers.css')}}"/>
                   <link rel="stylesheet" href="{{asset('css/footer.css')}}"/>
-                  <link rel="stylesheet" href="{{asset('css/carousel.css')}}"/>
-                  <link rel="stylesheet" href="{{asset('css/populars.css')}}"/>
-                  <link rel="stylesheet" href="{{asset('css/resto.css')}}"/>
                   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
                   <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome-all.min.css')}}"/>
                   <link rel="stylesheet" href="{{asset('assets/fonts/font-awesome.min.css')}}"/>
@@ -39,14 +36,16 @@
 
     </head>
     <body class="antialiased page-top" id="page-top">
-        @include('layouts/partials/header')
 
+    @include('layouts.partials.dashboardHeader')
+    <div id="wrapper">
+        @include('layouts.partials.managerSidebar')
         @yield('main')
+    </div>
 
-        @include('layouts/partials/footer')
+@include('layouts/partials/footer')
 
-          <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
-          <script src="{{asset('assets/dist/js/bootstrap.bundle.min.js')}}"></script>
+          <script src="{{asset('assets/dist/js/bootstrap.bundle.min.js.map')}}"></script>
           <script src="{{asset('assets/js/bs-init.js')}}"></script>
           <script src="{{asset('assets/js/chart.min.js')}}"></script>
           <script src="{{asset('assets/js/theme.js')}}"></script>
