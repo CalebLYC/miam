@@ -30,215 +30,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td><a href="">Vouvouzela</a></td>
-              <td>3.9</td>
-              <td>Agoè-Demakpoè</td>
-              <td>
-                <button class="btn btn-danger">Supprimer</button>
-              </td>
-            </tr>
+            @forelse ($restaurants as $restaurant)
+                <tr>
+                    <td>{{$restaurant->id}}</td>
+                    <td><a href="{{route('restaurants.show', ['restaurant'=>$restaurant->id])}}">
+                        {{$restaurant->nom}}
+                    </a></td>
+                    <td>{{$restaurant->rate_stars}}</td>
+                    <td>{{$restaurant->location}}</td>
+                    <td>
+                        <button onclick="remove()" class="btn btn-danger">Supprimer</button>
+                    </td>
+                </tr>
+            @empty
+                <div class="page-empty">
+                    Aucun restaurant enregistré
+                </div>
+            @endforelse
 
-            <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1,001</td>
-                <td><a href="">Vouvouzela</a></td>
-                <td>3.9</td>
-                <td>Agoè-Demakpoè</td>
-                <td>
-                  <button class="btn btn-danger">Supprimer</button>
-                </td>
-              </tr>
+            <form hidden id="delete-form" action="{{route('restaurants.destroy', ['restaurant'=>$restaurant->id])}}" method="post">
+                @csrf
+                @method('delete')
+            </form>
 
           </tbody>
         </table>

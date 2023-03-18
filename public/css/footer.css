@@ -24,6 +24,17 @@ footer{
     object-fit: cover;
 }
 
+.page-empty{
+    height: 50vh;
+    font-size: 22pt;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;

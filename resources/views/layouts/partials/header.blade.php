@@ -32,13 +32,13 @@
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-warning">
+              <a href="/" class="nav-link text-warning">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{route('restaurants.index')}}" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
                   Restaurants
                 </a>
@@ -50,7 +50,7 @@
               </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{route('about')}}" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
                     About
                 </a>

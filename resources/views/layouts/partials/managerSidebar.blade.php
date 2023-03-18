@@ -6,11 +6,11 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Tous les restaurants</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-plus"></i><span>Ajouter un nouveau restaurant</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-pen"></i><span>Modifier les informations de l'administrateur</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="{{{route('managerDashboard')}}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{{route('restoProfile')}}}"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('manageResto')}}"><i class="fas fa-table"></i><span>Tous les restaurants</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('restaurants.create')}}"><i class="fas fa-plus"></i><span>Ajouter un nouveau restaurant</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('managerDashboard')}}"><i class="fas fa-pen"></i><span>Modifier les informations de l'administrateur</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
         </div>

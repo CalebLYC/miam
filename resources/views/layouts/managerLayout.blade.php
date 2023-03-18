@@ -50,5 +50,6 @@
           <script src="{{asset('assets/js/chart.min.js')}}"></script>
           <script src="{{asset('assets/js/theme.js')}}"></script>
           <script src="{{asset('js/choose.js')}}"></script>
+          <script src="{{asset('js/delete.js')}}"></script>
     </body>
 </html>
