@@ -1,11 +1,11 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.managerLayout')
 @section('main')
 <div class="container-fluid">
     <h3 class="text-dark mb-4">Profile</h3>
     <div class="row mb-3">
         <div class="col-lg-4">
             <div class="card mb-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{Storage::url($restaurant->image->url)}}" width="160" height="160">
+                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{asset('img/bg/miam.png')}}" width="160" height="160">
                     <div class="mb-3"><button class="btn btn-success btn-sm" type="button">Changer la Photo</button></div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="col">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-success m-0 fw-bold">Paramètres de mon restaurant</p>
+                            <p class="text-success m-0 fw-bold">Données de l'administrateur</p>
                         </div>
                         <div class="card-body">
                             <form action="" method="post">
@@ -30,18 +30,15 @@
                                 @method('put')
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="username"><strong>Nom du restaurant</strong></label><input class="form-control" type="text" id="username" value="{{$restaurant->nom}}" name="username"></div>
+                                        <div class="mb-3"><label class="form-label" for="username"><strong>Nom du restaurant</strong></label><input class="form-control" type="text" id="username" value="Miam" name="username"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="email"><strong>Addresse Email</strong></label><input class="form-control" type="email" id="email" value="{{$restaurant->email}}" name="email"></div>
+                                        <div class="mb-3"><label class="form-label" for="email"><strong>Addresse Email</strong></label><input class="form-control" type="email" id="email" value="miam@gmail.com" name="email"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Localité</strong></label><input class="form-control" type="text" id="localite" value="{{$restaurant->location}}" name="localite"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Prix moyen</strong></label><input class="form-control" type="number" id="price" value="{{$restaurant->median_price}}" name="price"></div>
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Localité</strong></label><input class="form-control" type="text" id="localite" value="Lomé" name="localite"></div>
                                     </div>
                                 </div>
                                 <div class="mb-3"><button class="btn btn-success btn-sm" type="submit">Enregistrer les paramètres</button></div>

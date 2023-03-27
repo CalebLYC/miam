@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Plat;
+use App\Models\Rate;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +18,11 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('admin')->only(['destroy']);
+        $this->middleware('authResto')->only(['edit']);
+        $this->middleware('password.confirm')->only(['edit', 'destroy']);
+    }
     public function index()
     {
         return view('restaurants', ['restaurants'=>Restaurant::all()]);
@@ -87,8 +94,7 @@ class RestaurantController extends Controller
             $resto->image()->save($image);
 
 
-            //dd($request);
-            return redirect()->route('restoDashboard');
+            return redirect()->route('resto.dashboard');
         }else{
             return redirect()->back()->withErrors(['passwordConfirm'=>'Les mots de passe ne correspondent pas'])->withInput();
         }
@@ -102,7 +108,10 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        return view('restaurant', ['restaurant'=>Restaurant::findOrFail($id)]);
+        return view('resto', [
+            'restaurant'=>Restaurant::findOrFail($id),
+            'plats' => Plat::all()->where('restaurant_id', $id),
+        ]);
     }
 
     /**
@@ -113,7 +122,9 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        return view('modifyResto', ['restaurant'=>Restaurant::findOrFail($id)]);
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->rates = Rate::all()->where('restaurant_id', $restaurant->id);
+        return view('modifyResto', ['restaurant'=>$restaurant]);
     }
 
     /**
@@ -177,7 +188,7 @@ class RestaurantController extends Controller
 
 
             //dd($request);
-            return redirect()->route('restoDashboard');
+            return redirect()->route('resto.dashboard');
     }
 
     /**
@@ -202,5 +213,15 @@ class RestaurantController extends Controller
 
     public function manageResto(){
         return view('allRestos', ['restaurants'=>Restaurant::all()]);
+    }
+
+    public function apiIndex(){
+        $restaurants = Restaurant::all();
+        return json_encode($restaurants);
+    }
+
+    public function apiShow($id){
+        $restaurant = Restaurant::findOrFail($id);
+        return json_encode($restaurant);
     }
 }

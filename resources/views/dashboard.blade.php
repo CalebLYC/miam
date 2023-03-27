@@ -12,7 +12,7 @@
                     {{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="{{route('restoDashboard')}}"
+                    <a href="{{route('resto.dashboard')}}"
                         class="btn btn-success"
                         style="padding: 10px; background: #3e8e41; border-radius: 5px; margin-top:50px; cursor: pointer"
                     >

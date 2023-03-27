@@ -12,7 +12,7 @@
           <div class="carousel-caption text-start">
             <h1>Miam.</h1>
             <p>Avoir une vue globale des services de restauration</p>
-            <p><a class="btn btn-lg btn-success" href="#">Commencer</a></p>
+            <p><a class="btn btn-lg btn-success" href="#populars">Commencer</a></p>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
           <div class="carousel-caption">
             <h1>Restaurants.</h1>
             <p>Retrouve tes restaurants préférés.</p>
-            <p><a class="btn btn-lg btn-warning" href="#">Voir</a></p>
+            <p><a class="btn btn-lg btn-warning" href="{{route('restaurants.index')}}">Voir</a></p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <div class="carousel-caption text-end">
             <h1>Localisation.</h1>
             <p>Service de localisation intégré.</p>
-            <p><a class="btn btn-lg btn-success" href="#">Inscris-toi rapidement</a></p>
+            <p><a class="btn btn-lg btn-success" href="{{route('register')}}">Inscris-toi rapidement</a></p>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
         <img class="bd-placeholder-img rounded-circle carou-img" src="{{asset('img/bg/bg1.jpg')}}" alt="">
         <h2 class="fw-normal">Restaurants</h2>
         <p>De nombreux restaurants offrant les meilleurs services de restauration et de livraison</p>
-        <p><a class="btn btn-success" href="#">View&raquo;</a></p>
+        <p><a class="btn btn-success" href="{{route('restaurants.index')}}">View&raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img class="bd-placeholder-img rounded-circle carou-img" src="{{asset('img/bg/bg2.jpg')}}" alt="">

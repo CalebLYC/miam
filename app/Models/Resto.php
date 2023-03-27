@@ -6,40 +6,9 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurant extends Model implements Authenticatable
+class Resto extends Model implements Authenticatable
 {
     use HasFactory;
-
-    protected $table = 'restaurants';
-    protected $fillable = [
-        'nom',
-        'email',
-        'password',
-        'description',
-        'slogan',
-        'median_price',
-        'location',
-        'longitude',
-        'latitude',
-        'rate_stars',
-        'user_id',
-    ];
-
-    public function getUser(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function plats(){
-        return $this->hasMany(Plat::class);
-    }
-
-    public function image(){
-        return $this->morphOne(Image::class, 'imageable');
-    }
-
-    public function rates(){
-        return $this->belongsToMany(Rate::class);
-    }
 
     use \Illuminate\Auth\Authenticatable;
     use \Illuminate\Auth\Passwords\CanResetPassword;
@@ -63,13 +32,7 @@ class Restaurant extends Model implements Authenticatable
     }
 
     public static function check($email, $password){
-        $resto = static::where('email', $email)->first();
 
-        if($resto && password_verify($password, $resto->password)){
-            return true;
-        }
-
-        return false;
     }
 
     public static function user(){
@@ -90,4 +53,5 @@ class Restaurant extends Model implements Authenticatable
     {
         return $this->password;
     }
+
 }

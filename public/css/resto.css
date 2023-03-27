@@ -23,6 +23,11 @@
     margin-bottom: 25px;
     object-fit: cover;
 }
+
+.resto-infos{
+    margin-right: 5px;
+}
+
 .plat-head{
     background: url("../img/plats/plat1.jpg");
 }
@@ -35,14 +40,23 @@
 
 .infos{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 5px;
 }
-.info-price{
-    justify-content: center;
-}
-.info-price p{
+.info-item{
+    display: flex;
+    justify-content: space-around;
     margin: 3px;
+}
+
+.info-item p{
+    font-size: 14pt;
+}
+
+.infos a{
+    text-decoration: underline;
+    font-size: 22pt;
 }
 
 
@@ -64,12 +78,28 @@
     border-radius: 10px;
     object-fit: cover;
 }
+.plat-card{
+    width: 273px;
+}
 .plat button{
     padding: 10px;
 }
 .plat-description, .description{
     position: absolute;
     top: 400px;
+}
+
+.restoMap{
+    width: 100%;
+    margin: 25px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    background: #d6d6d6;
 }
 
 @media screen and (max-width: 1260px) {

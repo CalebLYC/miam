@@ -42,16 +42,16 @@
                         <button onclick="remove()" class="btn btn-danger">Supprimer</button>
                     </td>
                 </tr>
+
+                <form hidden id="delete-form" action="{{route('restaurants.destroy', ['restaurant'=>$restaurant->id])}}" method="post">
+                    @csrf
+                    @method('delete')
+                </form>
             @empty
                 <div class="page-empty">
                     Aucun restaurant enregistré
                 </div>
             @endforelse
-
-            <form hidden id="delete-form" action="{{route('restaurants.destroy', ['restaurant'=>$restaurant->id])}}" method="post">
-                @csrf
-                @method('delete')
-            </form>
 
           </tbody>
         </table>

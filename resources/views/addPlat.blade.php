@@ -21,7 +21,7 @@
                   </div>
                   <div class="mb-3 d-flex flex-column">
                     <input class="form-control d-none" type="file" id="platImage" name="platImage" value="{{old('platImage')}}">
-                    <span href="" id="choose-file" class="p-20 choose-file">Choisir une image pour votre restaurant</span>
+                    <span href="" id="choose-file" class="p-20 choose-file">Choisir une image pour le plat</span>
                     <img src="" width="400" height="400" class="" id="imageToShow" alt="">
                   </div>
                   @if($errors->any())

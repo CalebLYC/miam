@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Plat;
+use App\Models\Rate;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +18,18 @@ class PlatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct(){
+        $this->middleware('password.confirm')->only(['create', 'destroy', 'edit']);
+     }
     public function index()
     {
-        return view('myPlats', ['plats'=>Plat::all()->where('user_id', Auth::id())]);
+        $restaurant = Restaurant::findOrFail(Auth::guard('resto')->user()->id);
+        $restaurant->rates = Rate::all()->where('restaurant_id', $restaurant->id);
+        return view('myPlats', [
+            'plats'=>Plat::all()->where('restaurant_id', Auth::guard('resto')->user()->id),
+            'restaurant'=>$restaurant
+        ]);
     }
 
     /**
@@ -28,7 +39,9 @@ class PlatController extends Controller
      */
     public function create()
     {
-        return view('addPlat');
+        $restaurant = Restaurant::findOrFail(Auth::guard('resto')->user()->id);
+        $restaurant->rates = Rate::all()->where('restaurant_id', $restaurant->id);
+        return view('addPlat', ['restaurant'=>$restaurant]);
     }
 
     /**
@@ -61,7 +74,8 @@ class PlatController extends Controller
             $plat = Plat::create([
                 'nom' => $request->platName,
                 'price' => $request->platPrice,
-                'description' => $request->description,
+                'description' => $request->platDescription,
+                'restaurant_id' => Auth::guard('resto')->user()->id,
             ]);
 
             $image = new Image();
@@ -70,7 +84,7 @@ class PlatController extends Controller
 
             $plat->image()->save($image);
 
-            return redirect()->route('restoDashboard')->with('success', 'Nouveau plat ajouté au menu');
+            return redirect()->route('myPlats')->with('success', 'Nouveau plat ajouté au menu');
         }
     }
 
@@ -105,7 +119,47 @@ class PlatController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'platName' => 'required|min:3',
+            'platDescription' => 'required',
+            'platPrice' => 'required|numeric',
+            'platImage' => 'required|image|max:2048',
+        ]);
 
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $plat = Plat::findOrFail($id);
+
+        if($plat->image){
+            Storage::delete($plat->image->url);
+            $plat->image()->delete();
+        }
+
+        if($request->hasFile('platImage')){
+            $filename = time().'.'.$request->file('platImage')->extension();
+            $path = $request->file('platImage')->storeAs(
+                'platsImages',
+                $filename,
+                'public'
+            );
+
+            $plat->update([
+                'nom' => $request->platName,
+                'price' => $request->platPrice,
+                'description' => $request->platDescription,
+                'restaurant_id' => Auth::guard('resto')->user()->id,
+            ]);
+
+            $image = new Image();
+            $image->name = $filename;
+            $image->url = $path;
+
+            $plat->image()->save($image);
+
+            return redirect()->route('resto.dashboard')->with('success', 'Nouveau plat ajouté au menu');
+        }
     }
 
     /**
@@ -126,6 +180,16 @@ class PlatController extends Controller
         $plat->delete();
 
         return redirect()->back()->with('success', 'Plat supprimé avec succès');
+    }
+
+    public function apiIndex($id){
+        $plats = Plat::all()->where('restaurant_id', $id);
+        return json_encode($plats);
+    }
+
+    public function apiShow($id){
+        $plat = Plat::findOrFail($id);
+        return json_encode($plat);
     }
 
 }

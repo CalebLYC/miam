@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -44,11 +45,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function restaurant(){
+    public function restaurant(){
         return $this->hasOne(Restaurant::class);
     }
 
-    protected function rates(){
+    public function rates(){
         return $this->belongsToMany(Rate::class);
+    }
+
+    public function isAdmin(){
+        return Auth::user()->admin;
     }
 }

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rate;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ManagerController extends Controller
 {
@@ -11,7 +15,9 @@ class ManagerController extends Controller
     }
 
     public function dashboard(){
-        return view('restoDashboard');
+        $restaurant = Restaurant::findOrFail(Auth::guard('resto')->user()->id);
+        $restaurant->rates = Rate::all()->where('restaurant_id', $restaurant->id);
+        return view('restoDashboard', ['restaurant'=>$restaurant]);
     }
 
     public function logToManage(){
@@ -23,6 +29,41 @@ class ManagerController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        $restaurant = Restaurant::findOrFail(Auth::guard('resto')->user()->id);
+        $restaurant->rates = Rate::all()->where('restaurant_id', $restaurant->id);
+        return view('profile', ['restaurant'=>$restaurant]);
+    }
+
+    public function login(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if(Auth::guard('resto')->attempt($credentials)){
+            $request->session()->put('resto_id', Auth::guard('resto')->user()->id);
+            return redirect()->route('resto.dashboard');
+        }else{
+            return redirect()->back()->withErrors(['email'=>'Email ou mot de passe invalide'])->withInput();
+        }
+    }
+
+    public function logout(Request $request){
+        Auth::guard('resto')->logout();
+        $request->session()->forget('resto_id');
+        return redirect()->route('dashboard');
+    }
+
+    public function managerLogin(){
+
     }
 }

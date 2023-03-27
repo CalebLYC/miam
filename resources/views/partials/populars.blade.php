@@ -7,135 +7,35 @@
     </symbol>
 </svg>
 
-<div class="container populars">
+<div class="container populars" id="populars">
     <div class="container">
         <div class="row">
           <div class="col-8">
             <h2>Les restaurants populaires</h2>
           </div>
-          <a class="col-2 see-more" href="">Voir plus</a>
+          <a class="col-2 see-more" href="{{route('restaurants.index')}}">Voir plus</a>
         </div>
     </div>
     <div class="restos-list">
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
+        @foreach ($populars as $popular)
+            <a href="{{route('restaurants.show', ['restaurant'=>$popular->id])}}">
+                <div class="resto">
+                    <div class="resto-image">
+                        <img src="{{Storage::url($popular->image->url)}}" width="400" height="200" alt="Image du restaurant">
+                    </div>
+                    <div class="resto-infos">
+                        <h4>{{$popular->nom}}</h4>
+                        <div class="info-item"><p class="price-label">Prix moyen:   </p>
+                             <p class="price">{{$popular->price}} frs</p></div>
+                        <div class="info-item">
+                            <p>{{$popular->location}}</p>
+                        </div>
+                        <div class="info-item stars">
+                            <p>{{$popular->rate_stars}}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="resto">
-            <div class="resto-image">
-                <img src="{{asset('img/restos/resto1.jpg')}}" width="400" height="200" alt="Image du restaurant">
-            </div>
-            <div class="resto-infos">
-                <h4>Vouvouzela</h4>
-                <div class="info-item"><p class="price-label">Prix moyen:   </p>
-                     <p class="price">500 frs</p></div>
-                <div class="info-item">
-                    <p>Agoè-Demakpoè</p>
-                </div>
-                <div class="info-item stars">
-                    <p>3.9</p>
-                </div>
-            </div>
-        </div>
-
-
+            </a>
+        @endforeach
     </div>
 </div>

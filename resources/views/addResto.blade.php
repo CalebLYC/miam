@@ -44,11 +44,11 @@
                   </div>
                   <div class="mb-3">
                     <label for="restoLongitude" class="form-label">Longitude</label>
-                    <input type="number" class="form-control" id="restoLongitude" name="restoLongitude" value="{{old('restoLongitude')}}" placeholder="">
+                    <input type="" class="form-control" id="restoLongitude" name="restoLongitude" value="{{old('restoLongitude')}}" placeholder="">
                   </div>
                   <div class="mb-3">
                     <label for="restoLatitude" class="form-label">Latitude</label>
-                    <input type="number" class="form-control" id="restoLatitude" name="restoLatitude" value="{{old('restoLatitude')}}" placeholder="">
+                    <input type="" class="form-control" id="restoLatitude" name="restoLatitude" value="{{old('restoLatitude')}}" placeholder="">
                   </div>
                   <div class="mb-3">
                     <input class="form-control d-none" type="file" id="platImage" name="platImage" value="{{old('platImage')}}">
